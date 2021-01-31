@@ -13,6 +13,7 @@ export const useHeaderStyle = makeStyles((them: Theme) =>
   createStyles({
     root: {
       paddingTop: them.spacing(2),
+      marginBottom: them.spacing(3),
     },
     reloadBtn: {
       marginRight: them.spacing(1),

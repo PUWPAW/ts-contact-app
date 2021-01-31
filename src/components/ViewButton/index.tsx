@@ -16,6 +16,7 @@ export const ViewButton: React.FC = (): React.ReactElement => {
     <ButtonGroup variant="contained" aria-label="view buttons">
       {icons.map((icon: React.ReactElement, index: number) => (
         <Button
+          key={`${index}-${Math.random() * 10}`}
           onClick={() => handleActiveClick(index)}
           color={active === index ? "primary" : "default"}>
           {icon}
