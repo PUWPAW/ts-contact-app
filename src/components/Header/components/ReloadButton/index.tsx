@@ -1,7 +1,7 @@
 import React from "react";
 import { IconButton } from "@material-ui/core";
 import ReloadIcon from "@material-ui/icons/Replay";
-import { useHeaderStyle } from "../Header";
+import { useHeaderStyle } from "../../styles";
 
 type PropsType = {
   classes: ReturnType<typeof useHeaderStyle>;

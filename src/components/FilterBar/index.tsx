@@ -1,11 +1,10 @@
 import React from "react";
 import { Grid, Paper } from "@material-ui/core";
-import { Search } from "../Search";
-import { Selector } from "../Selector";
-import { useFilterBarStyles } from "./style";
+import { Search } from "./components/Search";
+import { Selector } from "./components/Selector";
+import { useFilterBarStyles } from "./styles";
+import { ClearButton } from "./components/ClearButton";
 
-// TODO
-// Сделать кнопку сброса фильтра
 export const FilterBar: React.FC = (): React.ReactElement => {
   const classes = useFilterBarStyles();
 
@@ -13,14 +12,17 @@ export const FilterBar: React.FC = (): React.ReactElement => {
     <Grid className={classes.root} container>
       <Paper className={classes.paper} elevation={3}>
         <Grid item container md={12}>
-          <Grid item md={4}>
-            <Search label="Search by full name" withBtn />
+          <Grid item md={4} xs={12}>
+            <Search label="Search by full name" withBtn classes={classes} />
           </Grid>
-          <Grid item md={2}>
-            <Selector />
+          <Grid item md={2} xs={12} container justify="center">
+            <Selector classes={classes} />
           </Grid>
-          <Grid item md={3}>
-            <Search label="Nationality" />
+          <Grid item md={3} xs={12}>
+            <Search label="Nationality" classes={classes} />
+          </Grid>
+          <Grid item md={3} xs={12} container justify="flex-end">
+            <ClearButton />
           </Grid>
         </Grid>
       </Paper>
