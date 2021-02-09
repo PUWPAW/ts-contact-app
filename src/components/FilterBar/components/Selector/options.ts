@@ -7,11 +7,16 @@ type OptionsType = {
 export const options: Array<OptionsType> = [
   {
     id: 0,
+    value: "",
+    title: "None",
+  },
+  {
+    id: 1,
     value: "male",
     title: "Male",
   },
   {
-    id: 1,
+    id: 2,
     value: "female",
     title: "Female",
   },

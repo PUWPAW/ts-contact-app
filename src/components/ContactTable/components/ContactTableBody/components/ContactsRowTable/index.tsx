@@ -3,11 +3,11 @@ import TableCell from "@material-ui/core/TableCell";
 import TableRow from "@material-ui/core/TableRow";
 import Typography from "@material-ui/core/Typography";
 import Avatar from "@material-ui/core/Avatar";
-import { ContactType } from "../../../../../../Store/actions/ContactsActionTypes";
+import { IContact } from "../../../../../../Store/actions/ActionTypes";
 import { nat } from "../../../../nationality";
 
 type PropsType = {
-  row: ContactType;
+  row: IContact;
 };
 
 // TODO

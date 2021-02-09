@@ -2,26 +2,24 @@ import { Dispatch } from "redux";
 import axios from "axios";
 import {
   ContactDispatchTypes,
-  CONTACTS_DATA_FAIL,
-  CONTACTS_DATA_LOADING,
-  CONTACTS_DATA_SUCCESS,
+  CONTACT_ACTIONS,
   IContactsFail,
   IContactsLoading,
   IContactsSuccess,
-  ContactType,
-} from "./ContactsActionTypes";
+  IContact,
+} from "./ActionTypes";
 
 const LoadingData = (): IContactsLoading => ({
-  type: CONTACTS_DATA_LOADING,
+  type: CONTACT_ACTIONS.CONTACTS_DATA_LOADING,
 });
 
-const SuccessData = (data: Array<ContactType>): IContactsSuccess => ({
-  type: CONTACTS_DATA_SUCCESS,
+const SuccessData = (data: Array<IContact>): IContactsSuccess => ({
+  type: CONTACT_ACTIONS.CONTACTS_DATA_SUCCESS,
   payload: data,
 });
 
 const FailData = (): IContactsFail => ({
-  type: CONTACTS_DATA_FAIL,
+  type: CONTACT_ACTIONS.CONTACTS_DATA_FAIL,
 });
 
 export const GetData = () => async (

@@ -4,6 +4,7 @@ export const useContactTableStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
       marginTop: theme.spacing(3),
+      marginBottom: theme.spacing(3),
     },
     table: {
       minWidth: 650,

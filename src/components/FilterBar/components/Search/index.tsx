@@ -4,16 +4,20 @@ import { Button, TextField } from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";
 import { useFilterBarStyles } from "../../styles";
 
-type PropsType = {
+interface PropsType {
   classes: ReturnType<typeof useFilterBarStyles>;
   withBtn?: boolean;
   label?: string;
-};
+  value?: string;
+  onChange?: (value: string) => void;
+}
 
 export const Search: React.FC<PropsType> = ({
   classes,
   withBtn,
   label,
+  value,
+  onChange,
 }: PropsType): React.ReactElement => {
   const { withButton, withoutButton } = classes;
 
@@ -30,6 +34,8 @@ export const Search: React.FC<PropsType> = ({
         label={label ? label : "Search..."}
         variant="outlined"
         size="small"
+        value={value}
+        onChange={(e) => onChange!(e.target.value)}
       />
       {withBtn && (
         <Button variant="outlined" aria-label="search">

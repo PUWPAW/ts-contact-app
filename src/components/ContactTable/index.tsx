@@ -14,7 +14,7 @@ import { Loader } from "../Loader";
 
 export const ContactTable = () => {
   const classes = useContactTableStyles();
-  const { data, loading, errorMsg } = useFetchData();
+  const { loading, errorMsg } = useFetchData();
 
   if (loading) {
     return <Loader />;
@@ -28,7 +28,7 @@ export const ContactTable = () => {
     <TableContainer className={classes.root} component={Paper} elevation={3}>
       <Table className={classes.table} size="small" aria-label="a dense table">
         <ContactTableHeader classes={classes} />
-        <ContactTablebody rows={data} />
+        <ContactTablebody />
       </Table>
     </TableContainer>
   );

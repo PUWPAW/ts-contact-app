@@ -1,23 +1,32 @@
 import React from "react";
 import TableBody from "@material-ui/core/TableBody";
 
-import { ContactType } from "../../../../Store/actions/ContactsActionTypes";
 import { useContactTableStyles } from "../../styles";
 import { ContactsRowTable } from "./components/ContactsRowTable";
 
+import { FilterData } from "../../utils/filterData";
+import { TableRow, TableCell, Typography } from "@material-ui/core";
+
 type PropsType = {
-  rows: Array<ContactType>;
   classes?: ReturnType<typeof useContactTableStyles>;
 };
 
-export const ContactTablebody: React.FC<PropsType> = ({
-  rows,
-}): React.ReactElement => {
+export const ContactTablebody: React.FC<PropsType> = (): React.ReactElement => {
+  const filteredData = FilterData();
+
   return (
     <TableBody>
-      {rows.map((row) => (
-        <ContactsRowTable key={row.login.uuid} row={row} />
-      ))}
+      {filteredData.length !== 0 ? (
+        filteredData.map((row) => (
+          <ContactsRowTable key={row.login.uuid} row={row} />
+        ))
+      ) : (
+        <TableRow>
+          <TableCell align="left">
+            <Typography>Таких данных нет!</Typography>
+          </TableCell>
+        </TableRow>
+      )}
     </TableBody>
   );
 };

@@ -1,41 +1,30 @@
-import {
-  ContactDispatchTypes,
-  CONTACTS_DATA_FAIL,
-  CONTACTS_DATA_LOADING,
-  CONTACTS_DATA_SUCCESS,
-  ContactType,
-} from "../actions/ContactsActionTypes";
+import { ContactDispatchTypes, CONTACT_ACTIONS } from "../actions/ActionTypes";
+import { IContactState } from "./reducerTypes";
 
-interface IDefaultState {
-  loading: boolean;
-  data: Array<ContactType>;
-  errorMsg: string;
-}
-
-const defaultState: IDefaultState = {
-  loading: false,
+const defaultState: IContactState = {
   data: [],
+  loading: false,
   errorMsg: "",
 };
 
 const ContactsReducer = (
-  state: IDefaultState = defaultState,
+  state = defaultState,
   action: ContactDispatchTypes
-): IDefaultState => {
+): IContactState => {
   switch (action.type) {
-    case CONTACTS_DATA_LOADING:
+    case CONTACT_ACTIONS.CONTACTS_DATA_LOADING:
       return {
         ...state,
         loading: true,
       };
-    case CONTACTS_DATA_SUCCESS:
+    case CONTACT_ACTIONS.CONTACTS_DATA_SUCCESS:
       return {
         ...state,
         loading: false,
         errorMsg: "",
-        data: [...action.payload],
+        data: action.payload,
       };
-    case CONTACTS_DATA_FAIL:
+    case CONTACT_ACTIONS.CONTACTS_DATA_FAIL:
       return {
         ...state,
         loading: false,
