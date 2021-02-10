@@ -18,7 +18,7 @@ export const useFetchData = (): IFetchData => {
   );
 
   useEffect(() => {
-    GetData(50, 5);
+    GetData(200);
   }, []);
 
   return {
