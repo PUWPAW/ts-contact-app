@@ -5,6 +5,9 @@ const defaultState: IContactState = {
   data: [],
   loading: false,
   errorMsg: "",
+  total: 0,
+  pageCapacity: 1,
+  currentPage: 1,
 };
 
 const ContactsReducer = (
@@ -23,12 +26,19 @@ const ContactsReducer = (
         loading: false,
         errorMsg: "",
         data: action.payload,
+        total: action.total,
+        pageCapacity: action.pageCapacity,
       };
     case CONTACT_ACTIONS.CONTACTS_DATA_FAIL:
       return {
         ...state,
         loading: false,
         errorMsg: "Something went wrong!",
+      };
+    case CONTACT_ACTIONS.CONTACTS_PAGE:
+      return {
+        ...state,
+        currentPage: action.payload,
       };
 
     default:

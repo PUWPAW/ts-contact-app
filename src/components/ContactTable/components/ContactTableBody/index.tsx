@@ -6,18 +6,27 @@ import { ContactsRowTable } from "./components/ContactsRowTable";
 
 import { FilterData } from "../../utils/filterData";
 import { TableRow, TableCell, Typography } from "@material-ui/core";
+import { useSelector } from "react-redux";
+import { RootStoreType } from "../../../../Store/store";
 
 type PropsType = {
   classes?: ReturnType<typeof useContactTableStyles>;
 };
 
 export const ContactTablebody: React.FC<PropsType> = (): React.ReactElement => {
+  const { currentPage, pageCapacity } = useSelector(
+    (state: RootStoreType) => state.contacts
+  );
   const filteredData = FilterData();
-
+  const startIndex = (currentPage - 1) * pageCapacity;
+  const selectedUsers = filteredData.slice(
+    startIndex,
+    startIndex + pageCapacity
+  );
   return (
     <TableBody>
       {filteredData.length !== 0 ? (
-        filteredData.map((row) => (
+        selectedUsers.map((row) => (
           <ContactsRowTable key={row.login.uuid} row={row} />
         ))
       ) : (

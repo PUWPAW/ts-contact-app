@@ -4,6 +4,7 @@ export enum CONTACT_ACTIONS {
   CONTACTS_DATA_LOADING = "CONTACTS_DATA_LOADING",
   CONTACTS_DATA_FAIL = "CONTACTS_DATA_FAIL",
   CONTACTS_DATA_SUCCESS = "CONTACTS_DATA_SUCCESS",
+  CONTACTS_PAGE = "CONTACTS_PAGE",
 }
 
 type ContactNameType = {
@@ -58,15 +59,23 @@ export interface IContactsFail {
   type: CONTACT_ACTIONS.CONTACTS_DATA_FAIL;
 }
 
+export interface IContactsPage {
+  type: CONTACT_ACTIONS.CONTACTS_PAGE;
+  payload: number;
+}
+
 export interface IContactsSuccess {
   type: CONTACT_ACTIONS.CONTACTS_DATA_SUCCESS;
   payload: Array<IContact>;
+  total: number;
+  pageCapacity: number;
 }
 
 export type ContactDispatchTypes =
   | IContactsLoading
   | IContactsFail
-  | IContactsSuccess;
+  | IContactsSuccess
+  | IContactsPage;
 
 //===================================//
 

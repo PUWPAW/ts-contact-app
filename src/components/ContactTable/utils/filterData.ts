@@ -7,6 +7,7 @@ export const FilterData = () => {
   const { nameValue, natValue, genderValue } = useSelector(
     (state: RootStoreType) => state.filter
   );
+
   return data.filter((el) => {
     const userName = `${el.name.title} ${el.name.first} ${el.name.last}`;
     const gender = genderValue === "" ? el.gender : el.gender === genderValue;
